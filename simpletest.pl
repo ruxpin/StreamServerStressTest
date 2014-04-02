@@ -8,14 +8,11 @@ $url = "rtsp://192.168.2.10:8554/test.mkv";
 $openRTSP = "/home/streamer/live/testProgs/openRTSP";
 $openRTSPPara = "-Q";
 $redirectStd = "2>&1";
-for( $session_id= 1; $session_id <= $sessions; $session_id++)
+if( $pid = fork )
 {
-  if( $pid = fork )
-  {
-  }
-  elsif(defined $pid)
-  {
-    $log_id = sprintf("%04d",$session_id);
-    exec("$openRTSP $openRTSPPara $url $redirectStd | tee log/session_${log_id}.log");
-  }
+}
+elsif(defined $pid)
+{
+  $log_id = sprintf("%04d",$session_id);
+  exec("$openRTSP $openRTSPPara $url $redirectStd | tee log/session_${log_id}.log");
 }
