@@ -19,5 +19,5 @@ for( $session_id= 1; $session_id <= $sessions; $session_id++)
     $log_id = sprintf("%04d",$session_id);
     exec("$openRTSP $openRTSPPara $url $redirectStd | tee log/session_${log_id}.log");
   }
-# usleep(100000);
+ usleep(100000);
 }

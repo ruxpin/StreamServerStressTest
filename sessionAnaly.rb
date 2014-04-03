@@ -6,7 +6,7 @@ play_started_session_count = 0
 FailedSessions = []
 StartedButNotFinishedSessions = []
 Dir.foreach("log") do |log_file|
-  next unless log_file =~ /\.log$/
+  next unless log_file =~ /session_\d+\.log$/
   total_session_count += 1
   play_started = false
   play_finished = false
