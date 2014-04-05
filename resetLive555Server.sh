@@ -1,6 +1,6 @@
 #!/bin/bash
 live555ID=`ps -ef|grep '[l]ive555'|awk '{print $2}'`
-cd ~/live/mediaServer
+cd ../mediaServer
 pwd
 if [[ $live555ID -ne "" ]]; then
   kill -9 `ps -ef|grep '[l]ive555'|awk '{print $2}'`
