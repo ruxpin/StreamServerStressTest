@@ -1,0 +1,2 @@
+#!/bin/bash
+./stressTest.pl --sessions=200 --url=rtsp://192.168.0.99:8554/live --duration=1200

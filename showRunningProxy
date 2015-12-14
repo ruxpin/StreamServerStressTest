@@ -1,0 +1,8 @@
+#!/bin/bash
+sessions_count=`ps -ef | grep '[l]ive555ProxyServer'|grep -v '\-p 855[4,5]' | wc -l` 
+if [ $sessions_count == "0" ]; then
+  echo No living ProxyServer session
+else
+  ps -ef | grep '[l]ive555ProxyServer'|grep -v '\-p 855[4,5]' | awk '$10 !~ /855/ {print NR,"| Living ProxyServer session ->","src ->",substr($11,18,4),"-> serving port ->",$10}'|sed -e 's/8554/Camera 1 /' -e 's/8555/Camera 2 /'
+  echo Total running sessions:  $sessions_count
+fi

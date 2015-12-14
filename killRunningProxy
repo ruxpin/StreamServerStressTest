@@ -1,0 +1,10 @@
+#!/bin/bash
+tokill=$(ps -ef|grep '[l]ive555ProxyServer'|awk '{print $2}')
+sessions_count=$(echo $tokill|wc -w)
+cd ../proxyServer
+if echo $tokill | egrep -q '[0-9]'; then
+  kill -9 $tokill
+  echo killed $sessions_count sessions
+else
+  echo No Live555ProxyServer running
+fi

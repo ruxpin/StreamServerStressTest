@@ -1,0 +1,18 @@
+#!/usr/bin/env perl
+use Time::HiRes qw(usleep nanosleep);
+$openRTSP = "./openRTSP";
+$openRTSPPara = "-Q -b 300000";
+for $num (1..200)
+{
+  if ($pid = fork)
+  {
+    usleep(100000);
+  }
+  elsif (defined $pid)
+  {
+    $log_id = sprintf("%04d",$num);
+    $url = "rtsp://192.168.0.99:8554/record$num";
+    exec("$openRTSP $openRTSPPara $url 2>&1 | tee log/session_${log_id}.log");
+    last;
+  }
+}

@@ -1,0 +1,2 @@
+#!/bin/bash
+./startProxy.pl -r --sessions=200
